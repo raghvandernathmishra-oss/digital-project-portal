@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Add Project</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Add Project</h1>
+
+<input type="text" id="studentName" placeholder="Student Name">
+
+<br><br>
+
+<input type="text" id="rollNumber" placeholder="Roll Number">
+
+<br><br>
+
+<input type="text" id="subject" placeholder="Subject">
+
+<br><br>
+
+<input type="text" id="topic" placeholder="Topic">
+
+<br><br>
+
+<input type="text" id="fileName" placeholder="Project File Name">
+
+<br><br>
+
+<button onclick="addProject()">Add Project</button>
+
+<p id="message"></p>
+
+<script>
+
+function addProject(){
+
+let projects =
+JSON.parse(localStorage.getItem("projects")) || [];
+
+projects.push({
+studentName: document.getElementById("studentName").value,
+rollNumber: document.getElementById("rollNumber").value,
+subject: document.getElementById("subject").value,
+topic: document.getElementById("topic").value,
+fileName: document.getElementById("fileName").value
+});
+
+localStorage.setItem(
+"projects",
+JSON.stringify(projects)
+);
+
+document.getElementById("message").innerHTML =
+"Project Added Successfully";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>View Students</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Registered Students</h1>
+
+<div id="students"></div>
+
+<script>
+
+let output = "";
+
+for(let i = 0; i < localStorage.length; i++){
+
+    let key = localStorage.key(i);
+
+    if(!isNaN(key)){
+
+        let student =
+        JSON.parse(localStorage.getItem(key));
+
+        output += `
+        <hr>
+        <h3>${student.name}</h3>
+        <p>Roll No: ${student.roll}</p>
+        <p>Class: ${student.class}</p>
+        `;
+    }
+
+}
+
+document.getElementById("students").innerHTML =
+output;
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>My Projects</h1>
+
+<div id="projects"></div>
+
+<script>
+
+let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+let output = "";
+
+for(let i = 0; i < projects.length; i++){
+
+   output += `
+<hr>
+<h3>Subject: ${projects[i].subject}</h3>
+<p>Topic: ${projects[i].topic}</p>
+
+<a href="https://github.com/rnmishraoffice-sys/Science-Project/raw/main/CELL%20DIVISION.docx" target="_blank">
+<button>Open Project</button>
+</a>
+`; 
+}
+
+if(projects.length === 0){
+    output = "<p>No projects uploaded yet.</p>";
+}
+
+document.getElementById("projects").innerHTML = output;
+
+</script>
+
+</body>
+</html>

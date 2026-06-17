@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Portal Settings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Portal Settings</h1>
+
+<label>Portal Title</label> <br> <input type="text" id="portalTitle">
+
+<br><br>
+
+<label>School Name</label> <br> <input type="text" id="schoolName">
+
+<br><br>
+
+<label>Background Color</label> <br> <input type="color" id="bgColor">
+
+<br><br>
+
+<button onclick="saveSettings()">Save Settings</button>
+
+<p id="message"></p>
+
+<script>
+
+function saveSettings(){
+
+localStorage.setItem(
+"portalTitle",
+document.getElementById("portalTitle").value
+);
+
+localStorage.setItem(
+"schoolName",
+document.getElementById("schoolName").value
+);
+
+localStorage.setItem(
+"bgColor",
+document.getElementById("bgColor").value
+);
+
+document.getElementById("message").innerHTML =
+"Settings Saved Successfully";
+
+}
+
+</script>
+
+</body>
+</html>

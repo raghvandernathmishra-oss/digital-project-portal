@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>View Projects</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>All Projects</h1>
+
+<div id="projects"></div>
+
+<script>
+
+let projects =
+JSON.parse(localStorage.getItem("projects")) || [];
+
+let output = "";
+
+for(let i = 0; i < projects.length; i++){
+
+    output += `
+    <hr>
+    <h3>Subject: ${projects[i].subject}</h3>
+    <p>Topic: ${projects[i].topic}</p>
+    <p>File: ${projects[i].fileName}</p>
+    `;
+
+}
+
+if(projects.length === 0){
+
+    output = "<p>No Projects Found</p>";
+
+}
+
+document.getElementById("projects").innerHTML =
+output;
+
+</script>
+
+</body>
+</html>

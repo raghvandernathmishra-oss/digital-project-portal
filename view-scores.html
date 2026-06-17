@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>View Scores</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Teacher Scores</h1>
+
+<div id="scores"></div>
+
+<script>
+
+let scores =
+JSON.parse(localStorage.getItem("scores")) || [];
+
+let output = "";
+
+for(let i = 0; i < scores.length; i++){
+
+output += `
+<hr>
+<h3>${scores[i].student}</h3>
+<p>Subject: ${scores[i].subject}</p>
+<p>Marks: ${scores[i].marks}</p>
+<p>Remark: ${scores[i].remark}</p>
+`;
+
+}
+
+if(scores.length === 0){
+
+output = "<p>No Scores Available</p>";
+
+}
+
+document.getElementById("scores").innerHTML =
+output;
+
+</script>
+
+</body>
+</html>

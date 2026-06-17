@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Dashboard Statistics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Portal Statistics</h1>
+
+<div id="stats"></div>
+
+<script>
+
+let students = 0;
+
+for(let i=0;i<localStorage.length;i++){
+    let key = localStorage.key(i);
+    if(!isNaN(key)){
+        students++;
+    }
+}
+
+let projects =
+JSON.parse(localStorage.getItem("projects")) || [];
+
+let scores =
+JSON.parse(localStorage.getItem("scores")) || [];
+
+document.getElementById("stats").innerHTML = `
+<h2>Total Students: ${students}</h2>
+<h2>Total Projects: ${projects.length}</h2>
+<h2>Total Scores: ${scores.length}</h2>
+`;
+
+</script>
+
+</body>
+</html>

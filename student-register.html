@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Student Registration</h1>
+
+<input type="text" id="name" placeholder="Student Name">
+<br><br>
+
+<input type="text" id="roll" placeholder="Roll Number">
+<br><br>
+
+<input type="text" id="class" placeholder="Class">
+<br><br>
+
+<input type="password" id="password" placeholder="Password">
+<br><br>
+
+<input type="password" id="confirmPassword" placeholder="Confirm Password">
+<br><br>
+
+<button onclick="registerStudent()">Register</button>
+
+<p id="message"></p>
+
+<script>
+function registerStudent() {
+
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+    let studentClass = document.getElementById("class").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(password !== confirmPassword){
+        document.getElementById("message").innerHTML =
+        "Passwords do not match!";
+        return;
+    }
+
+    localStorage.setItem(
+        roll,
+        JSON.stringify({
+            name:name,
+            roll:roll,
+            class:studentClass,
+            password:password
+        })
+    );
+
+    document.getElementById("message").innerHTML =
+    "Registration Successful!";
+}
+</script>
+
+</body>
+</html>

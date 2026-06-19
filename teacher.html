@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Teacher Access</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Teacher Access</h1>
+
+<input type="text" id="studentName" placeholder="Student Name">
+
+<br><br>
+
+<input type="text" id="rollNumber" placeholder="Roll Number">
+
+<br><br>
+
+<input type="text" id="subject" placeholder="Subject">
+
+<br><br>
+
+<input type="text" id="topic" placeholder="Topic">
+
+<br><br>
+
+<button onclick="openProject()">Open Project</button>
+
+<p id="message"></p>
+
+<hr>
+
+<h2>Give Marks</h2>
+
+<input type="number" id="marks" placeholder="Marks">
+
+<br><br>
+
+<input type="text" id="remark" placeholder="Remark">
+
+<br><br>
+
+<button onclick="saveScore()">Save Score</button>
+
+<script>
+
+function openProject() {
+
+```
+let name = document.getElementById("studentName").value;
+let roll = document.getElementById("rollNumber").value;
+let subject = document.getElementById("subject").value;
+let topic = document.getElementById("topic").value;
+
+let projects =
+JSON.parse(localStorage.getItem("projects")) || [];
+
+let found = false;
+
+for(let i = 0; i < projects.length; i++) {
+
+    if(
+        projects[i].studentName.toLowerCase() === name.toLowerCase() &&
+        projects[i].rollNumber === roll &&
+        projects[i].subject.toLowerCase() === subject.toLowerCase() &&
+        projects[i].topic.toLowerCase() === topic.toLowerCase()
+    ) {
+
+        document.getElementById("message").innerHTML =
+        "Project Found: " + projects[i].fileName;
+
+        found = true;
+        break;
+    }
+}
+
+if(!found) {
+
+    document.getElementById("message").innerHTML =
+    "Project Not Found";
+
+}
+```
+
+}
+
+
+function saveScore() {
+
+    let scores =
+    JSON.parse(localStorage.getItem("scores")) || [];
+
+    scores.push({
+        student: "Suryansh Mishra",
+        subject: "Science",
+        marks: document.getElementById("marks").value,
+        remark: document.getElementById("remark").value
+    });
+
+    localStorage.setItem(
+        "scores",
+        JSON.stringify(scores)
+    );
+
+    alert("Score Saved");
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Upload Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Upload Project</h1>
+
+<label>Student Name:</label> <br> <input type="text" id="studentName">
+
+<br><br>
+
+<label>Roll Number:</label> <br> <input type="text" id="rollNumber">
+
+<br><br>
+
+<label>Subject:</label> <br> <input type="text" id="subject">
+
+<br><br>
+
+<label>Topic:</label> <br> <input type="text" id="topic">
+
+<br><br>
+
+<label>GitHub Project Link:</label> <br> <input type="text" id="projectLink">
+
+<br><br>
+
+<button onclick="uploadProject()">Upload Project</button>
+
+<p id="message"></p>
+
+<script>
+
+function uploadProject() {
+
+    let studentName =
+    document.getElementById("studentName").value;
+
+    let rollNumber =
+    document.getElementById("rollNumber").value;
+
+    let subject =
+    document.getElementById("subject").value;
+
+    let topic =
+    document.getElementById("topic").value;
+
+    let projectLink =
+    document.getElementById("projectLink").value;
+
+    if(
+        studentName === "" ||
+        rollNumber === "" ||
+        subject === "" ||
+        topic === "" ||
+        projectLink === ""
+    ){
+        document.getElementById("message").innerHTML =
+        "Please fill all fields";
+        return;
+    }
+
+    let projects =
+    JSON.parse(localStorage.getItem("projects")) || [];
+
+    projects.push({
+        studentName: studentName,
+        rollNumber: rollNumber,
+        subject: subject,
+        topic: topic,
+        projectLink: projectLink
+    });
+
+    localStorage.setItem(
+        "projects",
+        JSON.stringify(projects)
+    );
+
+    document.getElementById("message").innerHTML =
+    "Project Uploaded Successfully!";
+}
+
+</script>
+
+</body>
+</html>

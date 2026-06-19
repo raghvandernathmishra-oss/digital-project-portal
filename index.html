@@ -2,8 +2,25 @@
 <html>
 <head>
     <title>Digital Project Portal</title>
+    <button onclick="masterLogin()">👑 Master Access</button>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<script>
+
+function masterLogin(){
+
+let password = prompt("Enter Master Password");
+
+if(password === "Suryansh_17"){
+window.location.href = "master-panel.html";
+}
+else{
+alert("Wrong Password");
+}
+
+}
+
+</script>
 <body>
 
 <marquee>Welcome to the Digital Project Portal! Please select your role to proceed.</marquee>

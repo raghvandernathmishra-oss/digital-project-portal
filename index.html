@@ -2,32 +2,42 @@
 <html>
 <head>
     <title>Digital Project Portal</title>
-    <button onclick="masterLogin()">👑 Master Access</button>
+   
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <script>
 
-function masterLogin(){
+let tapCount = 0;
 
-let password = prompt("Enter Master Password");
+function showMasterLogin() {
 
-if(password === "Suryansh_17"){
-window.location.href = "master-panel.html";
-}
-else{
-alert("Wrong Password");
-}
+    tapCount++;
+
+    if(tapCount >= 5){
+
+        let password = prompt("Enter Master Password");
+
+        if(password === "Suryansh_17"){
+            window.location.href = "master-panel.html";
+        }
+        else{
+            alert("Wrong Password");
+        }
+
+        tapCount = 0;
+    }
 
 }
 
 </script>
+
 <body>
 
 <marquee>Welcome to the Digital Project Portal! Please select your role to proceed.</marquee>
 
 <div class="container">
-    <h1>Digital Project Portal</h1>
-
+   <h1 onclick="showMasterLogin()">Digital Project Portal</h1>
     <a href="student-portal.html">
 
         <button>👨‍🎓 Student</button>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Student Login</h1>
+
+<input type="text" id="roll" placeholder="Roll Number">
+
+<br><br>
+
+<input type="password" id="password" placeholder="Password">
+
+<br><br>
+
+<button onclick="loginStudent()">Login</button>
+
+<p id="message"></p>
+
+<script>
+
+function loginStudent(){
+
+    let roll = document.getElementById("roll").value;
+
+    let password = document.getElementById("password").value;
+
+    let student = localStorage.getItem(roll);
+
+    if(student === null){
+
+        document.getElementById("message").innerHTML =
+        "Student Not Found";
+
+        return;
+    }
+
+    student = JSON.parse(student);
+
+    if(student.password === password){
+
+        document.getElementById("message").innerHTML =
+        "Login Successful";
+
+        alert("Welcome " + student.name);
+
+        window.location.href = "student-dashboard.html";
+        
+    }else{
+
+        document.getElementById("message").innerHTML =
+        "Wrong Password";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

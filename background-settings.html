@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Background Settings</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>🖼️ Background Settings</h1>
+
+<input type="file" id="bgImage">
+
+<br><br>
+
+<button onclick="saveBackground()">
+Save Background
+</button>
+
+<script>
+
+function saveBackground(){
+
+let file =
+document.getElementById("bgImage").files[0];
+
+if(!file){
+alert("Select an image");
+return;
+}
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+localStorage.setItem(
+"backgroundImage",
+e.target.result
+);
+
+alert("Background Saved");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
